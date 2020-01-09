@@ -1,0 +1,29 @@
+<!--  -->
+<template>
+  <div class="g-button">按钮</div>
+</template>
+
+<script>
+export default {};
+</script>
+<style lang='scss'>
+//@import url(); 引入公共css类
+.g-button {
+  font-size: var(--font-size);
+  height: var(--button-height);
+  padding: 0 1em;
+  font: inherit;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
+  background: var(--button-bg);
+  &:hover {
+    border-color: var(--border-color-hover);
+  }
+  &:active {
+    background-color: var(--button-active-bg);
+  }
+  &:focus {
+    outline: none;
+  }
+}
+</style>
