@@ -12497,6 +12497,8 @@ var _button = _interopRequireDefault(require("./button.vue"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+// 运行指令
+// ./node_modules/.bin/parcel index.html --no-cache
 _vue.default.component('g-button', _button.default);
 
 new _vue.default({
@@ -12530,7 +12532,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59501" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57048" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
