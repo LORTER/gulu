@@ -1,6 +1,8 @@
 <!--  -->
 <template>
-  <div class="g-button">按钮</div>
+  <div class="g-button">
+    <slot></slot>
+  </div>
 </template>
 
 <script>
