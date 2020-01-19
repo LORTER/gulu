@@ -20,7 +20,7 @@
     <!-- <svg class="icon" v-if="icon">
       <use :xlink:href="`#i-${icon}`" />
     </svg> -->
-    <g-icon v-if="icon" :name="icon"></g-icon>
+    <g-icon class="icon" v-if="icon" :name="icon"></g-icon>
     <div class="content">
       <slot></slot>
     </div>
