@@ -19,8 +19,9 @@
     <!-- 把icon抽象成组件 -->
     <!-- <svg class="icon" v-if="icon">
       <use :xlink:href="`#i-${icon}`" />
-    </svg> -->
+    </svg>-->
     <g-icon class="icon" v-if="icon" :name="icon"></g-icon>
+    <g-icon class="loading" name="loading"></g-icon>
     <div class="content">
       <slot></slot>
     </div>
@@ -48,7 +49,7 @@ export default {
         //   ? false
         //   : true;
         // 或者
-        
+
         return !(value !== "left" && value !== "right" && value !== "");
       }
     }
@@ -57,6 +58,14 @@ export default {
 </script>
 <style lang='scss'>
 //@import url(); 引入公共css类
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 .g-button {
   font-size: var(--font-size);
   height: var(--botton-height);
@@ -94,6 +103,9 @@ export default {
   }
   &:focus {
     outline: none;
+  }
+  .loading{
+    animation:spin 1.5s infinite linear;
   }
 }
 </style>
