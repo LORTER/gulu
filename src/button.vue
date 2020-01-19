@@ -15,13 +15,14 @@
   </button>-->
   <!-- 优化方法  用css来控制icon在文字前还是后-->
   <!-- 把iconPosition当做class的key值 -->
-  <button class="g-button" :class="{[`icon-${iconPosition}`]:true}">
+  <button class="g-button" :class="{[`icon-${iconPosition}`]:true}" @click="$emit('click')"
+  ><!--简写的@click="function(){this.$emit('click')}"-->
     <!-- 把icon抽象成组件 -->
     <!-- <svg class="icon" v-if="icon">
       <use :xlink:href="`#i-${icon}`" />
     </svg>-->
-    <g-icon class="icon" v-if="icon" :name="icon"></g-icon>
-    <g-icon class="loading" name="loading"></g-icon>
+    <g-icon class="icon" v-if="icon && !loading" :name="icon"></g-icon>
+    <g-icon class="loading icon" name="loading" v-if="loading"></g-icon>
     <div class="content">
       <slot></slot>
     </div>
@@ -33,6 +34,10 @@ export default {
   // props: ["icon", "iconPosition"]
   props: {
     icon: {},
+    loading:{
+      type:Boolean,
+      default:false
+    },
     iconPosition: {
       type: String,
       default: "left",
@@ -49,7 +54,6 @@ export default {
         //   ? false
         //   : true;
         // 或者
-
         return !(value !== "left" && value !== "right" && value !== "");
       }
     }
