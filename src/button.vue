@@ -80,7 +80,7 @@ export default {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  vertical-align: top;
+  vertical-align: middle;
   > .icon {
     order: 1;
     margin-right: 0.1em;
@@ -100,7 +100,7 @@ export default {
   }
   &:hover {
     border-color: var(--border-color-hover);
-    background-color: #f46;
+    // background-color: #f46;
   }
   &:active {
     background-color: var(--button-active-bg);
