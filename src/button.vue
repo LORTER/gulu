@@ -16,9 +16,11 @@
   <!-- 优化方法  用css来控制icon在文字前还是后-->
   <!-- 把iconPosition当做class的key值 -->
   <button class="g-button" :class="{[`icon-${iconPosition}`]:true}">
-    <svg class="icon" v-if="icon">
+    <!-- 把icon抽象成组件 -->
+    <!-- <svg class="icon" v-if="icon">
       <use :xlink:href="`#i-${icon}`" />
-    </svg>
+    </svg> -->
+    <g-icon v-if="icon" :name="icon"></g-icon>
     <div class="content">
       <slot></slot>
     </div>
