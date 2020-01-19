@@ -14,7 +14,17 @@ export default {
   //生命周期 - 创建完成（可以访问当前this实例）
   created() {},
   //生命周期 - 挂载完成（可以访问DOM元素）
-  mounted() {},
+  mounted() {
+    //   遍历查看当前组件的子元素，
+    // 如果不是button就警告
+      for(let node of this.$el.children){
+        //   js中toLowerCase()方法的作用:  把字符中的所有字母全部转换为小写
+        let name=node.nodeName.toLowerCase();
+          if(node.nodeName.toLowerCase() !== 'button'){
+              console.warn(`button-group 的子元素应全是 g-button,但是你写了一个${name}`)
+          }
+      }
+  },
   //方法集合
   methods: {},
   //监听属性 类似于data概念
