@@ -52,8 +52,10 @@ export default {
         //     border-left:none;
         // }
         // 解决办法
-        // 第一步
+        // 第一步,不是第一个元素的margin向左偏移1px
+        &:not(:first-child){
         margin-left:-1px;
+        }
         // 第二步
         &:hover{
             position: relative;
