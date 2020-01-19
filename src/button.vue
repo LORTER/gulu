@@ -27,7 +27,30 @@
 
 <script>
 export default {
-  props: ["icon", "iconPosition"]
+  // props: ["icon", "iconPosition"]
+  props: {
+    icon: {},
+    iconPosition: {
+      type: String,
+      default: "left",
+      // props传入值得钩子
+      // 属性检查器
+      validator(value) {
+        // if(value!=='left' && value!=='right' && value!==''){
+        //   return false
+        // }else{
+        //   return true
+        // }
+        // 简化
+        // return value !== "left" && value !== "right" && value !== ""
+        //   ? false
+        //   : true;
+        // 或者
+        
+        return !(value !== "left" && value !== "right" && value !== "");
+      }
+    }
+  }
 };
 </script>
 <style lang='scss'>
@@ -45,7 +68,7 @@ export default {
   vertical-align: top;
   > .icon {
     order: 1;
-    margin-right:.1em;
+    margin-right: 0.1em;
   }
   > .content {
     order: 2;
@@ -53,8 +76,8 @@ export default {
   &.icon-right {
     > .icon {
       order: 2;
-      margin-right:0;
-      margin-left:.1em;
+      margin-right: 0;
+      margin-left: 0.1em;
     }
     > .content {
       order: 1;
@@ -62,7 +85,7 @@ export default {
   }
   &:hover {
     border-color: var(--border-color-hover);
-    background-color:#f46;
+    background-color: #f46;
   }
   &:active {
     background-color: var(--button-active-bg);
