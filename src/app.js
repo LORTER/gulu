@@ -18,6 +18,8 @@ new Vue({
 })
 
 import chai from 'chai'
+import spies from 'chai-spies'
+chai.use(spies)
 const expect=chai.expect;
 // 单元测试
 
@@ -117,12 +119,14 @@ const expect=chai.expect;
     // 动态创建button
     vm.$mount();
     // 监听button组件的点击事件
-    vm.$on('click',function(){
-        console.log(1)
-    })
+    // 创建间谍函数
+    let spy=chai.spy(function(){})
+    vm.$on('click',spy)
     let button=vm.$el
+    // 当onclick被执行
     button.click();
-    // 期望什么等于什么
-    // 期望上面函数被执行
+    //我们期待间谍函数已经被调用了 
+    expect(spy).to.have.been.called();
+
     
 }
