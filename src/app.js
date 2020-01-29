@@ -15,21 +15,22 @@ new Vue({
     data:{
         loading1:false,
         loading2:true,
-        loading3:false
+        loading3:false,
+        message:'input的双向绑定事件'
     },
     methods:{
         inputChange(e){
-            console.log('change',e.target.value)
+            console.log('change',e)
         },
         inputValue(e){
-            console.log('value',e.target.value)
+            console.log('value',e)
         },
         inputFocus(e){
-            console.log('focus',e.target.value)
+            console.log('focus',e)
 
         },
         inputBlur(e){
-            console.log('blur',e.target.value)
+            console.log('blur',e)
         }
     }
 })

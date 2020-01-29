@@ -3,11 +3,15 @@
   <!-- <div class="wrapper" :class="{'error':error}"> -->
   <!-- 简写 -->
   <div class="wrapper" :class="{error}">
-    <input type="text" :value="value" :disabled="disabled" :readonly="readonly" @change="$emit('change',$event)"
-    @input="$emit('input',$event)"
-    @focus="$emit('focus',$event)"
-    @blur="$emit('blur',$event)"
+    <input type="text" :value="value" :disabled="disabled" :readonly="readonly" @change="$emit('change',$event.target.value)"
+    @input="$emit('input',$event.target.value)"
+    @focus="$emit('focus',$event.target.value)"
+    @blur="$emit('blur',$event.target.value)"
     /><!--$event为当前input的详细信息-->
+    <!-- 让组件input 支持双向绑定 -->
+    <!-- 1. :value="value" -->
+    <!-- 2.@input="$emit('input',$event.target.value)" -->
+    <!-- 3.<g-input v-model="message"></g-input> -->
     <template v-if="error">
       <icon name="error" class="icon-error"></icon>
       <span class="errorMessage">{{error}}</span>

@@ -54,6 +54,11 @@
             <g-input value="focus事件" @focus="inputFocus"></g-input>
             <g-input value="blur事件" @blur="inputBlur"></g-input>
         </div>
+        <div class="box">
+            <g-input v-model="message"></g-input>
+            <p>{{message}}</p>
+            <button @click="message+='1'">+1</button>
+        </div>
         <div style="margin: 20px;">
             <g-button icon="" icon-position="" :loading="loading1" @click="loading1=!loading1">
                 没有按钮
