@@ -31,6 +31,7 @@
 
 <script>
 export default {
+  name:'GuluButton',
   // props: ["icon", "iconPosition"]
   props: {
     icon: {},
@@ -60,7 +61,7 @@ export default {
   }
 };
 </script>
-<style lang='scss'>
+<style lang='scss' scoped>
 //@import url(); 引入公共css类
 @keyframes spin {
   0% {
@@ -105,7 +106,7 @@ export default {
   &:active {
     background-color: var(--button-active-bg);
   }
-  &:focus {
+&:focus {
     outline: none;
   }
   .loading{

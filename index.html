@@ -31,31 +31,44 @@
         body {
             font-size: var(--font-size);
         }
+
+        .box {
+            margin: 20px;
+        }
     </style>
 </head>
 
 <body>
     <div id="app">
-        <g-button icon="" icon-position="" :loading="loading1" @click="loading1=!loading1">
-            没有按钮
-        </g-button>
-        <g-button icon="settings" icon-position="left"  :loading="loading2" @click="loading2=!loading2">
-            按钮
-        </g-button>
-        <g-button icon="settings" icon-position="right"  :loading="loading3" @click="loading3=!loading3">
-            按钮
-        </g-button>
-        <g-icon name="download"></g-icon>
-        <button-group>
-            <g-button icon="left">上一页</g-button>
-            <g-button>更多</g-button>
-            <g-button icon="right" icon-position="right">下一页</g-button>
-        </button-group>
-        <div id="test"></div>
+        <div class="box">
+            <g-input :disabled=true></g-input>
+            <g-input value="李四" :readonly=true></g-input>
+            <g-input value="王五"></g-input>
+        </div>
+        <div class="box">
+            <g-input value="王二麻子" error="姓名不能超过五个字！"></g-input>
+        </div>
+        <div style="margin: 20px;">
+            <g-button icon="" icon-position="" :loading="loading1" @click="loading1=!loading1">
+                没有按钮
+            </g-button>
+            <g-button icon="settings" icon-position="left" :loading="loading2" @click="loading2=!loading2">
+                按钮
+            </g-button>
+            <g-button icon="settings" icon-position="right" :loading="loading3" @click="loading3=!loading3">
+                按钮
+            </g-button>
+            <g-icon name="download"></g-icon>
+            <button-group>
+                <g-button icon="left">上一页</g-button>
+                <g-button>更多</g-button>
+                <g-button icon="right" icon-position="right">下一页</g-button>
+            </button-group>
+        </div>
     </div>
     <script src="./src/app.js"></script>
     <!-- 添加iconfont -->
-    <script src="//at.alicdn.com/t/font_1609070_fyzsbt268tg.js"></script>
+    <script src="//at.alicdn.com/t/font_1609070_f6uj6va5pte.js"></script>
 </body>
 
 </html>
