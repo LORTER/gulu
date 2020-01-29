@@ -3,7 +3,11 @@
   <!-- <div class="wrapper" :class="{'error':error}"> -->
   <!-- 简写 -->
   <div class="wrapper" :class="{error}">
-    <input :value="value" :disabled="disabled" :readonly="readonly" type="text" />
+    <input type="text" :value="value" :disabled="disabled" :readonly="readonly" @change="$emit('change',$event)"
+    @input="$emit('input',$event)"
+    @focus="$emit('focus',$event)"
+    @blur="$emit('blur',$event)"
+    /><!--$event为当前input的详细信息-->
     <template v-if="error">
       <icon name="error" class="icon-error"></icon>
       <span class="errorMessage">{{error}}</span>
@@ -41,7 +45,8 @@ export default {
   //生命周期 - 创建完成（可以访问当前this实例）
   created() {},
   //生命周期 - 挂载完成（可以访问DOM元素）
-  mounted() {},
+  mounted() {
+  },
   //方法集合
   methods: {},
   //监听属性 类似于data概念

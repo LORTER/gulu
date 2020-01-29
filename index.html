@@ -48,6 +48,12 @@
         <div class="box">
             <g-input value="王二麻子" error="姓名不能超过五个字！"></g-input>
         </div>
+        <div class="box">
+            <g-input value="change事件" @change="inputChange"></g-input>
+            <g-input value="input事件" @input="inputValue"></g-input>
+            <g-input value="focus事件" @focus="inputFocus"></g-input>
+            <g-input value="blur事件" @blur="inputBlur"></g-input>
+        </div>
         <div style="margin: 20px;">
             <g-button icon="" icon-position="" :loading="loading1" @click="loading1=!loading1">
                 没有按钮

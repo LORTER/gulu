@@ -17,4 +17,19 @@ new Vue({
         loading2:true,
         loading3:false
     },
+    methods:{
+        inputChange(e){
+            console.log('change',e.target.value)
+        },
+        inputValue(e){
+            console.log('value',e.target.value)
+        },
+        inputFocus(e){
+            console.log('focus',e.target.value)
+
+        },
+        inputBlur(e){
+            console.log('blur',e.target.value)
+        }
+    }
 })
