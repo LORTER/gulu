@@ -1,14 +1,18 @@
 <!--  -->
 <template>
-  <div class='row'>
+  <div class='row' :style="{marginLeft:-gutter/2+'px',marginRight:-gutter/2+'px'}">
       <slot></slot>
   </div>
 </template>
 
 <script>
 export default {
+  name:'GuluRow',
   components: {
 
+  },
+  props:{
+    gutter:[Number,String]
   },
   data() {
    return {
@@ -17,11 +21,16 @@ export default {
    },
   //生命周期 - 创建完成（可以访问当前this实例）
   created() {
-     
+    //  console.log('row created')
     },
   //生命周期 - 挂载完成（可以访问DOM元素）
   mounted() {
-     
+    //  console.log('row mounted')
+    this.$children.forEach((vm)=>{
+      console.log(vm.gutter,1)
+      vm.gutter=this.gutter
+      console.log(vm.gutter,2)
+    })
     },
   //方法集合
   methods: {

@@ -1,7 +1,9 @@
 <!--  -->
 <template>
-  <div class="col" :class="[`col-${span}`]">
+  <div class="col" :class="[span&&`col-${span}`,offset && `offset-${offset}`]" :style="{paddingLeft:gutter/2+'px',paddingRight:gutter/2+'px'}">
+  <div style="border:1px solid green;height:100px;">
     <slot></slot>
+  </div>
   </div>
 </template>
 
@@ -10,15 +12,22 @@ export default {
     name:'GuluCol',
   components: {},
   props:{
-      span:[Number,String]
+      span:[Number,String],
+      offset:[Number,String],
   },
   data() {
-    return {};
+    return {
+      gutter:0
+    };
   },
   //生命周期 - 创建完成（可以访问当前this实例）
-  created() {},
+  created() {
+    //  console.log('col created')
+  },
   //生命周期 - 挂载完成（可以访问DOM元素）
-  mounted() {},
+  mounted() {
+    //  console.log('col mounted')
+  },
   //方法集合
   methods: {},
   //监听属性 类似于data概念
@@ -37,16 +46,22 @@ export default {
 <style lang='scss' scoped>
 //@import url(); 引入公共css类
 .col {
-  height: 100px;
-  background: grey;
+  // height: 100px;
+  // background: grey;
   width: 50%;
   border: 1px solid red;
 
-  $class: col-;
+  $class-prefix: col-;
 //   scss的forEch循环生成24个class
   @for $n from 1 through 24 {
-    &.#{$class}#{$n} {
+    &.#{$class-prefix}#{$n} {
       width: ($n/24) * 100%;
+    }
+  }
+  $class-prefix: offset-;
+  @for $n from 1 through 24 {
+    &.#{$class-prefix}#{$n} {
+      margin-left: ($n/24) * 100%;
     }
   }
 //   生成代码
