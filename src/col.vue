@@ -49,7 +49,7 @@ export default {
   // height: 100px;
   // background: grey;
   width: 50%;
-  border: 1px solid red;
+  // border: 1px solid red;
 
   $class-prefix: col-;
 //   scss的forEch循环生成24个class

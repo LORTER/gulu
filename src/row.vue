@@ -26,10 +26,11 @@ export default {
   //生命周期 - 挂载完成（可以访问DOM元素）
   mounted() {
     //  console.log('row mounted')
+    // 父元素的props里的值传给子元素，子元素在data里定义
     this.$children.forEach((vm)=>{
-      console.log(vm.gutter,1)
+      // console.log(vm.gutter,1)
       vm.gutter=this.gutter
-      console.log(vm.gutter,2)
+      // console.log(vm.gutter,2)
     })
     },
   //方法集合
