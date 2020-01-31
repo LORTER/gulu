@@ -1,6 +1,6 @@
 <!--  -->
 <template>
-  <div class="row" :style="rowStyle">
+  <div class="row" :style="rowStyle" :class="rowClass">
     <slot></slot>
   </div>
 </template>
@@ -10,7 +10,13 @@ export default {
   name: "GuluRow",
   components: {},
   props: {
-    gutter: [Number, String]
+    gutter: [Number, String],
+    align:{
+      type:String,
+      validator(value){
+        return ['left','right','center'].includes(value)
+      }
+    }
   },
   data() {
     return {};
@@ -38,6 +44,10 @@ export default {
         marginLeft: -this.gutter / 2 + "px",
         marginRight: -this.gutter / 2 + "px"
       };
+    },
+    rowClass(){
+      let {align} = this;
+      return [align && `align-${this.align}`]
     }
   }
 };
@@ -46,5 +56,14 @@ export default {
 //@import url(); 引入公共css类
 .row {
   display: flex;
+  &.align-left{
+    justify-content: flex-start;
+  }
+  &.align-center{
+    justify-content: center;
+  }
+  &.align-right{
+    justify-content: flex-end;
+  }
 }
 </style>

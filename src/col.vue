@@ -49,8 +49,8 @@ export default {
 //@import url(); 引入公共css类
 .col {
   // height: 100px;
-  // background: grey;
-  width: 50%;
+  background: grey;
+  // width: 50%;
   // border: 1px solid red;
 
   $class-prefix: col-;
