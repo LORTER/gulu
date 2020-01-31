@@ -1,7 +1,7 @@
 <!--  -->
 <template>
   <div class="col" :class="colClass" :style="colStyle">
-      <slot></slot>
+    <slot></slot>
   </div>
 </template>
 
@@ -11,7 +11,72 @@ export default {
   components: {},
   props: {
     span: [Number, String],
-    offset: [Number, String]
+    offset: [Number, String],
+    phone: {
+      type: [Number, String],
+      validator(value) {
+        let keys = Object.keys(value);
+        let valid = true;
+        keys.forEach(key => {
+          if (!["span", "offset"].includes(key)) {
+            valid = false;
+          }
+        });
+        return valid;
+      }
+    },
+    ipad: {
+      type: [Number, String],
+      validator(value) {
+        let keys = Object.keys(value);
+        let valid = true;
+        keys.forEach(key => {
+          if (!["span", "offset"].includes(key)) {
+            valid = false;
+          }
+        });
+        return valid;
+      }
+    },
+    narrowPc: {
+      type: [Number, String],
+      validator(value) {
+        let keys = Object.keys(value);
+        let valid = true;
+        keys.forEach(key => {
+          if (!["span", "offset"].includes(key)) {
+            valid = false;
+          }
+        });
+        return valid;
+      }
+    },
+    pc: {
+      type: [Number, String],
+      validator(value) {
+        let keys = Object.keys(value);
+        let valid = true;
+        keys.forEach(key => {
+          if (!["span", "offset"].includes(key)) {
+            valid = false;
+          }
+        });
+        return valid;
+      }
+    },
+    widePc: {
+      type: [Number, String],
+      validator(value) {
+        let keys = Object.keys(value);
+        let valid = true;
+        keys.forEach(key => {
+          if (!["span", "offset"].includes(key)) {
+            valid = false;
+          }
+        });
+        return valid;
+      }
+    }
   },
   data() {
     return {
@@ -31,9 +96,12 @@ export default {
   //监听属性 类似于data概念
   computed: {
     colClass() {
+      let { span, offset, phone } = this;
+      let phoneClass = [];
       return [
-        this.span && `col-${this.span}`,
-        this.offset && `offset-${this.offset}`
+        span && `col-${span}`,
+        offset && `offset-${offset}`,
+        ...(phone ? [`col-phone-${phone.span}`] : [])
       ];
     },
     colStyle() {
@@ -64,6 +132,81 @@ export default {
   @for $n from 1 through 24 {
     &.#{$class-prefix}#{$n} {
       margin-left: ($n/24) * 100%;
+    }
+  }
+  // 手机尺寸
+  @media (max-width: 576px) {
+    $class-prefix: col-phone-;
+    @for $n from 1 through 24 {
+      &.#{$class-prefix}#{$n} {
+        width: ($n/24) * 100%;
+      }
+    }
+    $class-prefix: offset-phone-;
+    @for $n from 1 through 24 {
+      &.#{$class-prefix}#{$n} {
+        margin-left: ($n/24) * 100%;
+      }
+    }
+  }
+  // ipad
+  @media (min-width: 577px) and (max-width: 768px) {
+    $class-prefix: col-ipad-;
+    @for $n from 1 through 24 {
+      &.#{$class-prefix}#{$n} {
+        width: ($n/24) * 100%;
+      }
+    }
+    $class-prefix: offset-ipad-;
+    @for $n from 1 through 24 {
+      &.#{$class-prefix}#{$n} {
+        margin-left: ($n/24) * 100%;
+      }
+    }
+  }
+  // 窄pc  narrow-pc
+  @media (min-width: 769px) and (max-width: 992px) {
+    $class-prefix: col-narrow-pc-;
+    @for $n from 1 through 24 {
+      &.#{$class-prefix}#{$n} {
+        width: ($n/24) * 100%;
+      }
+    }
+    $class-prefix: offset-narrow-pc-;
+    @for $n from 1 through 24 {
+      &.#{$class-prefix}#{$n} {
+        margin-left: ($n/24) * 100%;
+      }
+    }
+  }
+  //  pc
+  @media (min-width: 993px) and (max-width: 1200px) {
+    $class-prefix: col-pc-;
+    @for $n from 1 through 24 {
+      &.#{$class-prefix}#{$n} {
+        width: ($n/24) * 100%;
+      }
+    }
+    $class-prefix: offset-pc-;
+    @for $n from 1 through 24 {
+      &.#{$class-prefix}#{$n} {
+        margin-left: ($n/24) * 100%;
+      }
+    }
+  }
+  // 大屏pc  wide-pc
+  @media (min-width: 1201px) {
+    $class-prefix: col-wide-pc-;
+    @for $n from 1 through 24 {
+      &.#{$class-prefix}#{$n} {
+        width: ($n/24) * 100%;
+      }
+    }
+    $class-prefix: offset-wide-pc-;
+    @for $n from 1 through 24 {
+      &.#{$class-prefix}#{$n} {
+        margin-left: ($n/24) * 100%;
+      }
     }
   }
   //   生成代码
