@@ -11,3 +11,7 @@
 }
 
 ```
+## 启动
+```
+    ./node_modules/.bin/parcel index.html --no-cache
+```
