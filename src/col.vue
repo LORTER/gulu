@@ -22,13 +22,9 @@ export default {
   props: {
     span: [Number, String],
     offset: [Number, String],
-    phone: {
-      type: [Number, String],
-      validator // validator:validator      优化成
-    },
     ipad: {
       type: [Number, String],
-      validator
+      validator // validator:validator      优化成
     },
     narrowPc: {
       type: [Number, String],
@@ -50,16 +46,14 @@ export default {
   },
   computed: {
     colClass() {
-      let { span, offset, phone,ipad,narrowPc,pc,widePc } = this;
-      let phoneClass = [];
+      let { span, offset,ipad,narrowPc,pc,widePc } = this;
       return [
         span && `col-${span}`,
         offset && `offset-${offset}`,
-        ...(phone ? [`col-phone-${phone.span}`] : []),
         ...(ipad ? [`col-ipad-${ipad.span}`] : []),
-        ...(phone ? [`col-narrow-pc-${narrowPc.span}`] : []),
-        ...(phone ? [`col-pc-${pc.span}`] : []),
-        ...(phone ? [`col-wide-pc-${widePc.span}`] : []),
+        ...(narrowPc ? [`col-narrow-pc-${narrowPc.span}`] : []),
+        ...(pc ? [`col-pc-${pc.span}`] : []),
+        ...(widePc ? [`col-wide-pc-${widePc.span}`] : []),
       ];
     },
     colStyle() {
@@ -90,21 +84,6 @@ export default {
   @for $n from 1 through 24 {
     &.#{$class-prefix}#{$n} {
       margin-left: ($n/24) * 100%;
-    }
-  }
-  // 手机尺寸
-  @media (max-width: 576px) {
-    $class-prefix: col-phone-;
-    @for $n from 1 through 24 {
-      &.#{$class-prefix}#{$n} {
-        width: ($n/24) * 100%;
-      }
-    }
-    $class-prefix: offset-phone-;
-    @for $n from 1 through 24 {
-      &.#{$class-prefix}#{$n} {
-        margin-left: ($n/24) * 100%;
-      }
     }
   }
   // ipad
