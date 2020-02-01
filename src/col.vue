@@ -6,6 +6,16 @@
 </template>
 
 <script>
+let validator = value => {
+  let keys = Object.keys(value);
+  let valid = true;
+  keys.forEach(key => {
+    if (!["span", "offset"].includes(key)) {
+      valid = false;
+    }
+  });
+  return valid;
+};
 export default {
   name: "GuluCol",
   components: {},
@@ -14,68 +24,23 @@ export default {
     offset: [Number, String],
     phone: {
       type: [Number, String],
-      validator(value) {
-        let keys = Object.keys(value);
-        let valid = true;
-        keys.forEach(key => {
-          if (!["span", "offset"].includes(key)) {
-            valid = false;
-          }
-        });
-        return valid;
-      }
+      validator // validator:validator      优化成
     },
     ipad: {
       type: [Number, String],
-      validator(value) {
-        let keys = Object.keys(value);
-        let valid = true;
-        keys.forEach(key => {
-          if (!["span", "offset"].includes(key)) {
-            valid = false;
-          }
-        });
-        return valid;
-      }
+      validator
     },
     narrowPc: {
       type: [Number, String],
-      validator(value) {
-        let keys = Object.keys(value);
-        let valid = true;
-        keys.forEach(key => {
-          if (!["span", "offset"].includes(key)) {
-            valid = false;
-          }
-        });
-        return valid;
-      }
+      validator
     },
     pc: {
       type: [Number, String],
-      validator(value) {
-        let keys = Object.keys(value);
-        let valid = true;
-        keys.forEach(key => {
-          if (!["span", "offset"].includes(key)) {
-            valid = false;
-          }
-        });
-        return valid;
-      }
+      validator
     },
     widePc: {
       type: [Number, String],
-      validator(value) {
-        let keys = Object.keys(value);
-        let valid = true;
-        keys.forEach(key => {
-          if (!["span", "offset"].includes(key)) {
-            valid = false;
-          }
-        });
-        return valid;
-      }
+      validator
     }
   },
   data() {
@@ -83,25 +48,18 @@ export default {
       gutter: 0
     };
   },
-  //生命周期 - 创建完成（可以访问当前this实例）
-  created() {
-    //  console.log('col created')
-  },
-  //生命周期 - 挂载完成（可以访问DOM元素）
-  mounted() {
-    //  console.log('col mounted')
-  },
-  //方法集合
-  methods: {},
-  //监听属性 类似于data概念
   computed: {
     colClass() {
-      let { span, offset, phone } = this;
+      let { span, offset, phone,ipad,narrowPc,pc,widePc } = this;
       let phoneClass = [];
       return [
         span && `col-${span}`,
         offset && `offset-${offset}`,
-        ...(phone ? [`col-phone-${phone.span}`] : [])
+        ...(phone ? [`col-phone-${phone.span}`] : []),
+        ...(ipad ? [`col-ipad-${ipad.span}`] : []),
+        ...(phone ? [`col-narrow-pc-${narrowPc.span}`] : []),
+        ...(phone ? [`col-pc-${pc.span}`] : []),
+        ...(phone ? [`col-wide-pc-${widePc.span}`] : []),
       ];
     },
     colStyle() {

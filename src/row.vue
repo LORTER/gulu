@@ -56,6 +56,7 @@ export default {
 //@import url(); 引入公共css类
 .row {
   display: flex;
+  flex-wrap: wrap;
   &.align-left{
     justify-content: flex-start;
   }
