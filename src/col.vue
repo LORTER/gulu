@@ -23,19 +23,19 @@ export default {
     span: [Number, String],
     offset: [Number, String],
     ipad: {
-      type: [Number, String],
+      type: Object,
       validator // validator:validator      优化成
     },
     narrowPc: {
-      type: [Number, String],
+      type: Object,
       validator
     },
     pc: {
-      type: [Number, String],
+      type: Object,
       validator
     },
     widePc: {
-      type: [Number, String],
+      type: Object,
       validator
     }
   },
@@ -46,14 +46,26 @@ export default {
   },
   computed: {
     colClass() {
-      let { span, offset,ipad,narrowPc,pc,widePc } = this;
+      let { span, offset, ipad, narrowPc, pc, widePc } = this;
+      let createClass = (obj, str = "") => {
+        if (!obj) {
+          return [];
+        }
+        let array = [];
+        if (obj.span) {
+          array.push(`col-${str}${obj.span}`);
+        }
+        if (obj.offset) {
+          array.push(`col-${str}${obj.offset}`);
+        }
+        return array;
+      };
       return [
-        span && `col-${span}`,
-        offset && `offset-${offset}`,
-        ...(ipad ? [`col-ipad-${ipad.span}`] : []),
-        ...(narrowPc ? [`col-narrow-pc-${narrowPc.span}`] : []),
-        ...(pc ? [`col-pc-${pc.span}`] : []),
-        ...(widePc ? [`col-wide-pc-${widePc.span}`] : []),
+        ...createClass({ span, offset }),
+        ...createClass(ipad, "ipad-"),
+        ...createClass(narrowPc, "narrow-pc-"),
+        ...createClass(pc, "pc-"),
+        ...createClass(widePc, "wide-pc-")
       ];
     },
     colStyle() {
@@ -87,7 +99,7 @@ export default {
     }
   }
   // ipad
-  @media (min-width: 577px){
+  @media (min-width: 577px) {
     $class-prefix: col-ipad-;
     @for $n from 1 through 24 {
       &.#{$class-prefix}#{$n} {
@@ -102,7 +114,7 @@ export default {
     }
   }
   // 窄pc  narrow-pc
-  @media (min-width: 769px){
+  @media (min-width: 769px) {
     $class-prefix: col-narrow-pc-;
     @for $n from 1 through 24 {
       &.#{$class-prefix}#{$n} {
@@ -117,7 +129,7 @@ export default {
     }
   }
   //  pc
-  @media (min-width: 993px){
+  @media (min-width: 993px) {
     $class-prefix: col-pc-;
     @for $n from 1 through 24 {
       &.#{$class-prefix}#{$n} {

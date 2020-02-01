@@ -40,11 +40,21 @@
             border:1px solid #f46;
             height:100px;
         }
+        .list{
+            background-color: coral;
+            border:1px solid #f34;
+            height:150px;
+        }
     </style>
 </head>
 
 <body>
     <div id="app">
+        <g-row>
+            <g-col span="23" offset="1" :narrow-pc="{span:12,offset:12}">
+                <div class="list"></div>
+            </g-col>
+        </g-row>
         <g-row>
             <g-col span="24" :ipad="{span:12}" :narrow-pc="{span:8}" :pc="{span:6}" :widePc="{span:4}">
                 <div class="demo">最</div>
