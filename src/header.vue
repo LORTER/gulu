@@ -1,6 +1,6 @@
 <!--  -->
 <template>
-  <div class='content'>
+  <div class='header'>
 
   </div>
 </template>
@@ -45,8 +45,8 @@ export default {
   }
 </script>
 <style lang='scss' scoped>
-  //@import url(); 引入公共css类
-  .content{
+  //@import url(); 引入公共css类 
+  .header{
       
   }
 </style>

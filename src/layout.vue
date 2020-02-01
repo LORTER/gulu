@@ -1,6 +1,6 @@
 <!--  -->
 <template>
-  <div class=''>
+  <div class='layout'>
 
   </div>
 </template>
@@ -46,5 +46,7 @@ export default {
 </script>
 <style lang='scss' scoped>
   //@import url(); 引入公共css类
-  
+  .layout{
+
+  }
 </style>
