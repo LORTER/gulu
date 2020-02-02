@@ -1,7 +1,8 @@
 <!--  -->
 <template>
   <div class="toast">
-    <slot></slot>
+    <slot v-if="!enableHtml"></slot>
+    <div v-else v-html="$slots.default"></div>
     <template v-if="closeButton">
       <div class="line"></div>
       <span class="close" @click="onClickClose">{{closeButton.text}}</span>
@@ -32,13 +33,20 @@ export default {
           callback: undefined
         };
       }
+    },
+    // 是否支持传入html代码
+    enableHtml:{
+      type:Boolean,
+      default:false
     }
   },
   data() {
     return {};
   },
   //生命周期 - 创建完成（可以访问当前this实例）
-  created() {},
+  created() {
+    console.log(this.$slots.$el)
+  },
   //生命周期 - 挂载完成（可以访问DOM元素）
   mounted() {
     if (this.autoClose) {
@@ -83,7 +91,7 @@ export default {
 <style lang='scss' scoped>
 //@import url(); 引入公共css类
 $font-size: 14px;
-$toast-height: 40px;
+$toast-min-height: 40px;
 $toast-bg: rgba(0, 0, 0, 0.75);
 .toast {
   position: fixed;
@@ -91,13 +99,13 @@ $toast-bg: rgba(0, 0, 0, 0.75);
   left: 50%;
   transform: translateX(-50%);
   font-size: $font-size;
-  height: $toast-height;
+  min-height: $toast-min-height;
   display: flex;
   align-items: center;
   background: $toast-bg;
   border-radius: 4px;
   box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.5);
-  padding: 0 16px;
+  padding: 8px 16px;
   color: whitesmoke;
   .line {
     height: 100%;
@@ -106,6 +114,7 @@ $toast-bg: rgba(0, 0, 0, 0.75);
   }
   .close {
     padding-left: 16px;
+    flex-shrink: 0;
   }
 }
 </style>
