@@ -1,10 +1,10 @@
 <!--  -->
 <template>
-  <div class="toast">
+  <div class="toast" ref="wrapper">
     <slot v-if="!enableHtml"></slot>
     <div v-else v-html="$slots.default"></div>
     <template v-if="closeButton">
-      <div class="line"></div>
+      <div class="line" ref="line"></div>
       <span class="close" @click="onClickClose">{{closeButton.text}}</span>
     </template>
   </div>
@@ -53,7 +53,10 @@ export default {
       setTimeout(() => {
         this.close();
       }, this.autoCloseDelay * 1000);
-    }
+    };
+    this.$nextTick(()=>{
+      this.$refs.line.style.height=`${this.$refs.wrapper.getBoundingClientRect().height}px`
+    })
   },
   //方法集合
   methods: {
