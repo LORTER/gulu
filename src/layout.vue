@@ -1,18 +1,21 @@
 <!--  -->
 <template>
-  <div class='layout'>
-
+  <div class='layout' :class="layoutClass">
+      <slot></slot>
   </div>
 </template>
 
 <script>
 export default {
+    name:'GuluLayout',
   components: {
 
   },
   data() {
    return {
-   
+      layoutClass:{
+        hasSider:false
+      }
      };
    },
   //生命周期 - 创建完成（可以访问当前this实例）
@@ -21,7 +24,12 @@ export default {
     },
   //生命周期 - 挂载完成（可以访问DOM元素）
   mounted() {
-     
+    //  探测子集里面是否包含sider组件
+    this.$children.forEach((vm)=>{
+      if(vm.$options.name==='GuluSider'){
+        this.layoutClass.hasSider=true
+      }
+    })
     },
   //方法集合
   methods: {
@@ -47,6 +55,11 @@ export default {
 <style lang='scss' scoped>
   //@import url(); 引入公共css类
   .layout{
-
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      &.hasSider{
+        flex-direction: row;
+      }
   }
 </style>

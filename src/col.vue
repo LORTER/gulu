@@ -56,7 +56,7 @@ export default {
           array.push(`col-${str}${obj.span}`);
         }
         if (obj.offset) {
-          array.push(`col-${str}${obj.offset}`);
+          array.push(`offset-${str}${obj.offset}`);
         }
         return array;
       };
@@ -81,7 +81,7 @@ export default {
 //@import url(); 引入公共css类
 .col {
   // height: 100px;
-  background: grey;
+  // background: grey;
   // width: 50%;
   // border: 1px solid red;
 

@@ -26,160 +26,262 @@
 
         #app {
             margin: 20px;
+            margin-bottom: 160px;
         }
 
         body {
             font-size: var(--font-size);
         }
 
+        h2 {
+            text-align: center;
+            color: #4fc08d;
+            border-bottom: 4px solid #35495e;
+            padding-bottom: 20px;
+            margin: 20px;
+        }
+
         .box {
             margin: 20px;
         }
-        .demo{
-            background-color:#396;
-            border:1px solid #f46;
-            height:100px;
+
+        .blue-style-height {
+            background-color: #70f3ff;
+            border: 1px solid #35495e;
+            height: 50px;
         }
-        .list{
+
+        .red-style-height {
+            background-color: #ff4777;
+            border: 1px solid #35495e;
+            height:50px;
+        }
+
+        .green-style-height {
             background-color: coral;
-            border:1px solid #f34;
-            height:150px;
+            background-color: #c9dd22;
+            border: 1px solid #35495e;
         }
+
+        .orange-style-height {
+            background-color: #ffa400;
+            border: 1px solid #35495e;
+        }
+        .blue-style {
+            background-color: #70f3ff;
+            border: 1px solid #35495e;
+            height: 50px;
+        }
+
+        .red-style {
+            background-color: #ff4777;
+            border: 1px solid #35495e;
+            height: 50px;
+        }
+
+        .green-style {
+            background-color: coral;
+            background-color: #c9dd22;
+            border: 1px solid #35495e;
+            height: 50px;
+        }
+
+        .orange-style {
+            background-color: #ffa400;
+            border: 1px solid #35495e;
+            height: 50px;
+        }
+        
     </style>
 </head>
 
 <body>
     <div id="app">
+        <h2>默认布局<二></h2>
+        <g-layout style="height:50vh">
+            <g-sider class="orange-style-height">sider</g-sider>
+            <g-layout>
+                <g-header class="red-style-height">header</g-header>
+                <g-content class="green-style-height">content</g-content>
+                <g-footer class="blue-style-height">footer</g-footer>
+            </g-layout>
+        </g-layout>
+        <h2>默认布局<一></h2>
+        <g-layout style="height:50vh">
+            <g-header class="red-style-height">header</g-header>
+            <g-layout>
+                <g-sider class="orange-style-height">sider</g-sider>
+                <g-content class="green-style-height">content</g-content>
+            </g-layout>
+            <g-footer class="blue-style-height">footer</g-footer>
+        </g-layout>
+        <h2>响应式布局</h2>
         <g-row>
             <g-col span="23" offset="1" :narrow-pc="{span:12,offset:12}">
-                <div class="list"></div>
+                <div class="green-style"></div>
             </g-col>
         </g-row>
         <g-row>
             <g-col span="24" :ipad="{span:12}" :narrow-pc="{span:8}" :pc="{span:6}" :widePc="{span:4}">
-                <div class="demo">最</div>
+                <div class="blue-style">最</div>
             </g-col>
             <g-col span="24" :ipad="{span:12}" :narrow-pc="{span:8}" :pc="{span:6}" :widePc="{span:4}">
-                <div class="demo">终</div>
+                <div class="blue-style">终</div>
             </g-col>
             <g-col span="24" :ipad="{span:12}" :narrow-pc="{span:8}" :pc="{span:6}" :widePc="{span:4}">
-                <div class="demo">演</div>
+                <div class="blue-style">演</div>
             </g-col>
             <g-col span="24" :ipad="{span:12}" :narrow-pc="{span:8}" :pc="{span:6}" :widePc="{span:4}">
-                <div class="demo">示</div>
+                <div class="blue-style">示</div>
             </g-col>
             <g-col span="24" :ipad="{span:12}" :narrow-pc="{span:8}" :pc="{span:6}" :widePc="{span:4}">
-                <div class="demo">效</div>
+                <div class="blue-style">效</div>
             </g-col>
             <g-col span="24" :ipad="{span:12}" :narrow-pc="{span:8}" :pc="{span:6}" :widePc="{span:4}">
-                <div class="demo">果</div>
+                <div class="blue-style">果</div>
             </g-col>
         </g-row>
-        <div style="border:1px solid black;">
+        <div>
+            <h2>设置间距</h2>
             <g-row gutter="20">
-                <g-col span="24"
-                 :ipad="{span:8}"
-                 :narrow-pc="{span:4}"
-                 :pc="{span:2}"
-                 :wide-pc="{span:1}"
-                 >2</g-col>
-                <g-col span="24"
-                 :ipad="{span:16}"
-                 :narrow-pc="{span:20}"
-                 :pc="{span:22}"
-                 :wide-pc="{span:23}"
-                 >20</g-col>
+                <g-col span="24" :ipad="{span:8}" :narrow-pc="{span:4}" :pc="{span:2}" :wide-pc="{span:1}">
+                    <div class="red-style"></div>
+                </g-col>
+                <g-col span="24" :ipad="{span:16}" :narrow-pc="{span:20}" :pc="{span:22}" :wide-pc="{span:23}">
+                    <div class="red-style"></div>
+                </g-col>
             </g-row>
-            <g-row gutter="20" >
+            <g-row gutter="20">
                 <g-col span="8">
-                    <g-row align="left">
-                        <g-col span="">4</g-col>
-                        <g-col span="">20</g-col>
+                    <g-row align="left" class="green-style">
+                        <g-col span="">左</g-col>
+                        <g-col span="">边</g-col>
                     </g-row>
                 </g-col>
                 <g-col span="8">
-                    <g-row align="center">
-                        <g-col span="">4</g-col>
-                        <g-col span="">20</g-col>
+                    <g-row align="center" class="green-style">
+                        <g-col span="">中</g-col>
+                        <g-col span="">间</g-col>
                     </g-row>
                 </g-col>
                 <g-col span="8">
-                    <g-row align="right">
-                        <g-col span="">4</g-col>
-                        <g-col span="">20</g-col>
+                    <g-row align="right" class="green-style">
+                        <g-col span="">右</g-col>
+                        <g-col span="">边</g-col>
                     </g-row>
                 </g-col>
             </g-row>
             <g-row gutter="30">
-                <g-col>1</g-col>
-                <g-col>2</g-col>
-                <g-col>3</g-col>
+                <g-col span="8">
+                    <div class="blue-style"></div>
+                </g-col>
+                <g-col span="8">
+                    <div class="blue-style">
+                </g-col span="8">
+                <g-col span="8">
+                    <div class="blue-style">
+                </g-col span="8">
+            </g-row>
+            <h2>24份平分</h2>
+            <g-row>
+                <g-col span="6">
+                    <div class="red-style"></div>
+                </g-col>
+                <g-col span="6">
+                    <div class="red-style"></div>
+                </g-col span="6">
+                <g-col span="6">
+                    <div class="red-style"></div>
+                </g-col span="6">
+                <g-col span="6">
+                    <div class="red-style"></div>
+                </g-col span="6">
             </g-row>
             <g-row>
-                <g-col>1</g-col>
-                <g-col>2</g-col>
-                <g-col>3</g-col>
-                <g-col>4</g-col>
+                <g-col span="2">
+                    <div class="green-style"></div>
+                </g-col>
+                <g-col span="22">
+                    <div class="green-style"></div>
+                </g-col>
             </g-row>
             <g-row>
-                <g-col span="2">2</g-col>
-                <g-col span="22">22</g-col>
+                <g-col span="4">
+                    <div class="blue-style"></div>
+                </g-col>
+                <g-col span="20">
+                    <div class="blue-style"></div>
+                </g-col>
+            </g-row>
+            <h2>自定义偏移间距</h2>
+            <g-row>
+                <g-col span="2">
+                    <div class="red-style"></div>
+                </g-col>
+                <g-col span="20" offset="2">
+                    <div class="red-style"></div>
+                </g-col>
             </g-row>
             <g-row>
-                <g-col span="4">4</g-col>
-                <g-col span="20">20</g-col>
+                <g-col span="4">
+                    <div class="green-style"></div>
+                </g-col>
+                <g-col span="8" offset="2">
+                    <div class="green-style"></div>
+                </g-col>
+                <g-col span="6" offset="4">
+                    <div class="green-style"></div>
+                </g-col>
             </g-row>
             <g-row>
-                <g-col span="2">2</g-col>
-                <g-col span="20" offset="2">20</g-col>
+                <g-col span="2">
+                    <div class="blue-style"></div>
+                </g-col>
+                <g-col span="8" offset="3">
+                    <div class="blue-style"></div>
+                </g-col>
+                <g-col span="8" offset="3">
+                    <div class="blue-style"></div>
+                </g-col>
             </g-row>
-            <g-row>
-                <g-col span="4">4</g-col>
-                <g-col span="8" offset="2">8</g-col>
-                <g-col span="6" offset="4">6</g-col>
-            </g-row>
-            <g-row>
-                <g-col span="2">2</g-col>
-                <g-col span="8" offset="3">8</g-col>
-                <g-col span="8" offset="3">8</g-col>
-            </g-row>
-        </div>
-
-        <div class="box">
-            <g-input :disabled=true></g-input>
-            <g-input value="李四" :readonly=true></g-input>
-            <g-input value="王五"></g-input>
-        </div>
-        <div class="box">
-            <g-input value="王二麻子" error="姓名不能超过五个字！"></g-input>
-        </div>
-        <div class="box">
-            <g-input value="change事件" @change="inputChange"></g-input>
-            <g-input value="input事件" @input="inputValue"></g-input>
-            <g-input value="focus事件" @focus="inputFocus"></g-input>
-            <g-input value="blur事件" @blur="inputBlur"></g-input>
-        </div>
-        <div class="box">
-            <g-input v-model="message"></g-input>
-            <p>{{message}}</p>
-            <button @click="message+='1'">+1</button>
-        </div>
-        <div style="margin: 20px;">
-            <g-button icon="" icon-position="" :loading="loading1" @click="loading1=!loading1">
-                没有按钮
-            </g-button>
-            <g-button icon="settings" icon-position="left" :loading="loading2" @click="loading2=!loading2">
-                按钮
-            </g-button>
-            <g-button icon="settings" icon-position="right" :loading="loading3" @click="loading3=!loading3">
-                按钮
-            </g-button>
-            <g-icon name="download"></g-icon>
-            <button-group>
-                <g-button icon="left">上一页</g-button>
-                <g-button>更多</g-button>
-                <g-button icon="right" icon-position="right">下一页</g-button>
-            </button-group>
+            <h2>输入框</h2>
+            <div class="box">
+                <g-input :disabled=true></g-input>
+                <g-input value="李四" :readonly=true></g-input>
+                <g-input value="王五"></g-input>
+            </div>
+            <div class="box">
+                <g-input value="王二麻子" error="姓名不能超过五个字！"></g-input>
+            </div>
+            <div class="box">
+                <g-input value="change事件" @change="inputChange"></g-input>
+                <g-input value="input事件" @input="inputValue"></g-input>
+                <g-input value="focus事件" @focus="inputFocus"></g-input>
+                <g-input value="blur事件" @blur="inputBlur"></g-input>
+            </div>
+            <div class="box">
+                <g-input v-model="message"></g-input>
+                <p>{{message}}</p>
+                <button @click="message+='1'">+1</button>
+            </div>
+            <h2>按钮</h2>
+            <div style="margin: 20px;">
+                <g-button icon="" icon-position="" :loading="loading1" @click="loading1=!loading1">
+                    没有按钮
+                </g-button>
+                <g-button icon="settings" icon-position="left" :loading="loading2" @click="loading2=!loading2">
+                    按钮
+                </g-button>
+                <g-button icon="settings" icon-position="right" :loading="loading3" @click="loading3=!loading3">
+                    按钮
+                </g-button>
+                <g-icon name="download"></g-icon>
+                <button-group>
+                    <g-button icon="left">上一页</g-button>
+                    <g-button>更多</g-button>
+                    <g-button icon="right" icon-position="right">下一页</g-button>
+                </button-group>
+            </div>
         </div>
     </div>
     <script src="./src/app.js"></script>
