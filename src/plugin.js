@@ -4,11 +4,15 @@ import Toast from './toast'
 export default {
     install(Vue,options){
         // 这样在vue里执行this.$toast,则可以执行这个方法
-        Vue.prototype.$toast=function(message){
+        Vue.prototype.$toast=function(message,toastoptions){
             // alert(message)   不用alert创建div
             // 用js挂载.vue组件/动态创建toast实例
             let Constructor=Vue.extend(Toast)
-            let toast = new Constructor();
+            let toast = new Constructor({
+                propsData:{
+                    closeButton:toastoptions.closeButton
+                }
+            });
             // 把调用时的this.$toast("message")挂载到toast组件的slot，为默认内容
             toast.$slots.default=message
             // 这时候toast已经出现在了内存里面，还没展示到页面
