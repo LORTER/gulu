@@ -7,8 +7,19 @@
 
 <script>
 export default {
+  name:'GuluToast',
   components: {
 
+  },
+  props:{
+    autoClose:{
+      type:Boolean,
+      default:true
+    },
+    autoCloseDelay:{
+      type:Number,
+      default:3
+    }
   },
   data() {
    return {
@@ -21,11 +32,20 @@ export default {
     },
   //生命周期 - 挂载完成（可以访问DOM元素）
   mounted() {
-     
+     if(this.autoClose){
+       setTimeout(()=>{
+         this.close()
+       },this.autoCloseDelay*1000)
+     }
     },
   //方法集合
   methods: {
-     
+     close(){
+      //  组件删除
+       this.$el.remove();
+      //  移除所有事件
+       this.$destroy()
+     }
     },
   //监听属性 类似于data概念
   computed: {

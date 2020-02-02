@@ -6,7 +6,7 @@ export default {
         // 这样在vue里执行this.$toast,则可以执行这个方法
         Vue.prototype.$toast=function(message){
             // alert(message)   不用alert创建div
-            // 用js挂载.vue组件/动态创建实例
+            // 用js挂载.vue组件/动态创建toast实例
             let Constructor=Vue.extend(Toast)
             let toast = new Constructor();
             // 把调用时的this.$toast("message")挂载到toast组件的slot，为默认内容
