@@ -12,6 +12,8 @@ import Footer from './footer.vue'
 import Layout from './layout.vue'
 import Sider from './sider.vue'
 import Header from './header.vue'
+// import Toast from './toast.vue'
+import plugin from './plugin'
 
 
 
@@ -26,6 +28,8 @@ Vue.component('g-footer',Footer)
 Vue.component('g-layout',Layout)
 Vue.component('g-sider',Sider)
 Vue.component('g-header',Header)
+// Vue.component('g-toast',Toast)
+Vue.use(plugin)
 new Vue({
     el:'#app',
     data:{
@@ -33,6 +37,9 @@ new Vue({
         loading2:true,
         loading3:false,
         message:'input的双向绑定事件'
+    },
+    created(){
+        // this.$toast();
     },
     methods:{
         inputChange(e){
@@ -47,6 +54,9 @@ new Vue({
         },
         inputBlur(e){
             console.log('blur',e)
+        },
+        showToast(){
+            this.$toast('弹出层！')
         }
     }
 })
