@@ -1,11 +1,14 @@
 <!--  -->
 <template>
   <div class="toast" ref="wrapper">
-    <slot v-if="!enableHtml"></slot>
-    <div v-else v-html="$slots.default"></div>
+    <div class="message">
+      <slot v-if="!enableHtml"></slot>
+      <div v-else v-html="$slots.default"></div>
+    </div>
     <template v-if="closeButton">
       <div class="line" ref="line"></div>
       <span class="close" @click="onClickClose">{{closeButton.text}}</span>
+      
     </template>
   </div>
 </template>
@@ -35,9 +38,9 @@ export default {
       }
     },
     // 是否支持传入html代码
-    enableHtml:{
-      type:Boolean,
-      default:false
+    enableHtml: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -45,7 +48,6 @@ export default {
   },
   //生命周期 - 创建完成（可以访问当前this实例）
   created() {
-    console.log(this.$slots.$el)
   },
   //生命周期 - 挂载完成（可以访问DOM元素）
   mounted() {
@@ -53,15 +55,18 @@ export default {
       setTimeout(() => {
         this.close();
       }, this.autoCloseDelay * 1000);
-    };
-    this.$nextTick(()=>{
-      this.$refs.line.style.height=`${this.$refs.wrapper.getBoundingClientRect().height}px`
-    })
+    }
+
+    this.$nextTick(() => {
+      this.$refs.line.style.height = `${
+        this.$refs.wrapper.getBoundingClientRect().height
+      }px`;
+    });
   },
   //方法集合
   methods: {
-    log(){
-      console.log('示例方法！')
+    log() {
+      console.log("示例方法！");
     },
     close() {
       //  组件删除
@@ -108,11 +113,14 @@ $toast-bg: rgba(0, 0, 0, 0.75);
   background: $toast-bg;
   border-radius: 4px;
   box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.5);
-  padding: 8px 16px;
+  padding: 0px 16px;
   color: whitesmoke;
+  .message{
+    padding:8px 0;
+  }
   .line {
     height: 100%;
-    border-left: 1px solid #666;
+    border-left: 1px solid #f46;
     margin-left: 16px;
   }
   .close {

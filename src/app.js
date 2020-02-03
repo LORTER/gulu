@@ -56,18 +56,17 @@ new Vue({
             console.log('blur',e)
         },
         showToast(){
-    
-    this.$toast('<div>我下课时都能付款</div><div>asjdbjsd</div><i>弹出层！<i>',{
+            
+    this.$toast('<div style="color:red">支持html代码</div><div>asjdbjsd</div><i>弹出层！<i>',{
                 closeButton:{
-                    text:'知道',
+                    text:'知道了',
                     callback(toast){
                         console.log('用户说他知道了');
                         // 这样执行了回调后，又可以调用组件内部的方法
                         console.log(toast.log())
                     },
-                    
                 },
-                enableHtml:false
+                enableHtml:true
             })
         }
     }

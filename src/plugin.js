@@ -5,7 +5,6 @@ export default {
     install(Vue,options){
         // 这样在vue里执行this.$toast,则可以执行这个方法
         Vue.prototype.$toast=function(message,toastoptions){
-            console.log(toastoptions)
             // alert(message)   不用alert创建div
             // 用js挂载.vue组件/动态创建toast实例
             let Constructor=Vue.extend(Toast)
