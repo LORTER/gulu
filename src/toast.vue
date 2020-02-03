@@ -1,14 +1,16 @@
 <!--  -->
 <template>
-  <div class="toast" ref="wrapper" :class="toastClasses">
-    <div class="message">
-      <slot v-if="!enableHtml"></slot>
-      <div v-else v-html="$slots.default"></div>
+  <div class="wrapper" :class="toastClasses">
+    <div class="toast" ref="toast">
+      <div class="message">
+        <slot v-if="!enableHtml"></slot>
+        <div v-else v-html="$slots.default"></div>
+      </div>
+      <template v-if="closeButton">
+        <div class="line" ref="line"></div>
+        <span class="close" @click="onClickClose">{{closeButton.text}}</span>
+      </template>
     </div>
-    <template v-if="closeButton">
-      <div class="line" ref="line"></div>
-      <span class="close" @click="onClickClose">{{closeButton.text}}</span>
-    </template>
   </div>
 </template>
 
@@ -23,7 +25,7 @@ export default {
     },
     autoCloseDelay: {
       type: Number,
-      default: 2
+      default: 200
     },
     // 关闭按钮+回调
     closeButton: {
@@ -64,7 +66,7 @@ export default {
 
     this.$nextTick(() => {
       this.$refs.line.style.height = `${
-        this.$refs.wrapper.getBoundingClientRect().height
+        this.$refs.toast.getBoundingClientRect().height
       }px`;
     });
   },
@@ -76,8 +78,8 @@ export default {
     close() {
       //  组件删除
       this.$el.remove();
-      // 向外触发一个beforeClose的事件 
-      this.$emit('beforeClose');
+      // 向外触发一个beforeClose的事件
+      this.$emit("beforeClose");
       //  移除所有事件
       this.$destroy();
     },
@@ -114,50 +116,85 @@ export default {
 $font-size: 14px;
 $toast-min-height: 40px;
 $toast-bg: rgba(0, 0, 0, 0.75);
-@keyframes fade-in {
-  0%{
+$animation-duration:300ms;
+@keyframes side-up {
+  0% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+@keyframes side-down {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+@keyframes side-middle {
+  0% {
     opacity: 0;
   }
-  100%{
+  100% {
     opacity: 1;
   }
 }
-.toast {
-  animation: fade 2s;
+.wrapper {
   position: fixed;
   left: 50%;
-  font-size: $font-size;
-  min-height: $toast-min-height;
-  display: flex;
-  align-items: center;
-  background: $toast-bg;
-  border-radius: 4px;
-  box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.5);
-  padding: 0px 16px;
-  color: whitesmoke;
+  transform: translateX(-50%);
   &.position-top {
     top: 0;
-  transform: translateX(-50%);
+    .toast {
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+      animation: side-down $animation-duration;
+    }
   }
   &.position-middle {
     top: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
+    .toast {
+      animation: side-middle $animation-duration;
+    }
   }
   &.position-bottom {
     bottom: 0;
-    transform: translateX(-50%);
+    .toast {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      animation: side-up $animation-duration;
+    }
   }
-  .message {
-    padding: 8px 0;
-  }
-  .line {
-    height: 100%;
-    border-left: 1px solid #f46;
-    margin-left: 16px;
-  }
-  .close {
-    padding-left: 16px;
-    flex-shrink: 0;
+  .toast {
+    font-size: $font-size;
+    min-height: $toast-min-height;
+    display: flex;
+    align-items: center;
+    background: $toast-bg;
+    border-radius: 4px;
+    box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.5);
+    padding: 0px 16px;
+    color: whitesmoke;
+
+    .message {
+      padding: 8px 0;
+    }
+    .line {
+      height: 100%;
+      border-left: 1px solid #f46;
+      margin-left: 16px;
+    }
+    .close {
+      padding-left: 16px;
+      flex-shrink: 0;
+    }
   }
 }
 </style>
