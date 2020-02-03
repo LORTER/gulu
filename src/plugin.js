@@ -11,6 +11,7 @@ export default {
         Vue.prototype.$toast=function(message,toastoptions){
             // alert(message)   不用alert创建div
             if(currentToast){
+                // 这是调用组件内的close方法！！！
                 currentToast.close();
             }
            currentToast= createToast({Vue,message,propsData:toastoptions});

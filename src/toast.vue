@@ -23,7 +23,7 @@ export default {
     },
     autoCloseDelay: {
       type: Number,
-      default: 50
+      default: 2
     },
     // 关闭按钮+回调
     closeButton: {
@@ -112,7 +112,16 @@ export default {
 $font-size: 14px;
 $toast-min-height: 40px;
 $toast-bg: rgba(0, 0, 0, 0.75);
+@keyframes fade-in {
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+}
 .toast {
+  animation: fade 2s;
   position: fixed;
   left: 50%;
   font-size: $font-size;
