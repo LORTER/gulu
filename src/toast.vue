@@ -76,6 +76,8 @@ export default {
     close() {
       //  组件删除
       this.$el.remove();
+      // 向外触发一个beforeClose的事件 
+      this.$emit('beforeClose');
       //  移除所有事件
       this.$destroy();
     },
