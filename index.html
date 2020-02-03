@@ -54,7 +54,7 @@
         .red-style-height {
             background-color: #ff4777;
             border: 1px solid #35495e;
-            height:50px;
+            height: 50px;
         }
 
         .green-style-height {
@@ -67,6 +67,7 @@
             background-color: #ffa400;
             border: 1px solid #35495e;
         }
+
         .blue-style {
             background-color: #70f3ff;
             border: 1px solid #35495e;
@@ -91,7 +92,6 @@
             border: 1px solid #35495e;
             height: 50px;
         }
-        
     </style>
 </head>
 
@@ -99,11 +99,13 @@
     <div id="app">
         <h2>Toast</h2>
         <div>
-            <button @click="showToastTop">上弹出层</button>
-            <button @click="showToastMiddle">中弹出层</button>
-            <button @click="showToastBottom">下弹出层</button>
+            <g-button @click="showToastTop">上弹出层</g-button>
+            <g-button @click="showToastMiddle">中弹出层</g-button>
+            <g-button @click="showToastBottom">下弹出层</g-button>
+            <g-button @click="verifyToast">验证是否会重叠toast</g-button>
         </div>
-        <h2>默认布局<二></h2>
+        <h2>默认布局<二>
+        </h2>
         <g-layout style="height:50vh">
             <g-sider class="orange-style-height">sider</g-sider>
             <g-layout>
@@ -112,7 +114,8 @@
                 <g-footer class="blue-style-height">footer</g-footer>
             </g-layout>
         </g-layout>
-        <h2>默认布局<一></h2>
+        <h2>默认布局<一>
+        </h2>
         <g-layout style="height:50vh">
             <g-header class="red-style-height">header</g-header>
             <g-layout>

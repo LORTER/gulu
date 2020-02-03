@@ -56,7 +56,7 @@ new Vue({
             console.log('blur',e)
         },
         showToastTop(){
-            this.$toast('<div style="color:red">不支持html代码</div><div>上弹出层！</div>',{
+            this.$toast('<div style="color:red">支持html代码</div><div>上弹出层！</div>',{
                 closeButton:{
                     text:'知道了',
                     // toast为返回的VUE组件实例this
@@ -66,11 +66,12 @@ new Vue({
                         console.log(toast.log())
                     },
                 },
+                // 是否支持html代码传入
                 enableHtml:true
             })
         },
         showToastMiddle(){
-            this.$toast('<div style="color:red">支持html代码</div><div>中弹出层！</div>',{
+            this.$toast('<div style="color:red">不支持html代码</div><div>中弹出层！</div>',{
                 closeButton:{
                     text:'知道了',
                     callback(toast){
@@ -95,6 +96,20 @@ new Vue({
                 },
                 enableHtml:true,
                 position:'bottom'
+            })
+        },
+        verifyToast(){
+            this.$toast(`您的目前成绩为${parseInt(Math.random()*100)},需要继续补充代码！`,{
+                closeButton:{
+                    text:'继续学习',
+                    callback(toast){
+                        console.log('用户说他知道了继续学习！');
+                        // 这样执行了回调后，又可以调用组件内部的方法
+                        console.log(toast.log())
+                    },
+                },
+                enableHtml:false,
+                position:'middle'
             })
         }
     }
