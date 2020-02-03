@@ -55,18 +55,46 @@ new Vue({
         inputBlur(e){
             console.log('blur',e)
         },
-        showToast(){
-            
-    this.$toast('<div style="color:red">支持html代码</div><div>asjdbjsd</div><i>弹出层！<i>',{
+        showToastTop(){
+            this.$toast('<div style="color:red">不支持html代码</div><div>上弹出层！</div>',{
                 closeButton:{
                     text:'知道了',
+                    // toast为返回的VUE组件实例this
                     callback(toast){
-                        console.log('用户说他知道了');
+                        console.log('用户说他知道了上弹出层！');
                         // 这样执行了回调后，又可以调用组件内部的方法
                         console.log(toast.log())
                     },
                 },
                 enableHtml:true
+            })
+        },
+        showToastMiddle(){
+            this.$toast('<div style="color:red">支持html代码</div><div>中弹出层！</div>',{
+                closeButton:{
+                    text:'知道了',
+                    callback(toast){
+                        console.log('用户说他知道了中弹出层！');
+                        // 这样执行了回调后，又可以调用组件内部的方法
+                        console.log(toast.log())
+                    },
+                },
+                enableHtml:false,
+                position:'middle'
+            })
+        },
+        showToastBottom(){
+            this.$toast('<div style="color:red">支持html代码</div><div>下弹出层！</div>',{
+                closeButton:{
+                    text:'知道了',
+                    callback(toast){
+                        console.log('用户说他知道了下弹出层！');
+                        // 这样执行了回调后，又可以调用组件内部的方法
+                        console.log(toast.log())
+                    },
+                },
+                enableHtml:true,
+                position:'bottom'
             })
         }
     }

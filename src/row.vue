@@ -16,7 +16,7 @@ export default {
       validator(value){
         return ['left','right','center'].indexOf(value)>=0
       }
-    }
+    },
   },
   data() {
     return {};
