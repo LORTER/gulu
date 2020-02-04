@@ -12,8 +12,13 @@ import Footer from './footer.vue'
 import Layout from './layout.vue'
 import Sider from './sider.vue'
 import Header from './header.vue'
-// import Toast from './toast.vue'
+import Toast from './toast.vue'
 import plugin from './plugin'
+import Tabs from './tabs.vue'
+import TabsHead from './tabs-head.vue'
+import TabsBody from './tabs-body.vue'
+import TabsItem from './tabs-item.vue'
+import TabsPane from './tabs-pane.vue'
 
 
 
@@ -28,7 +33,12 @@ Vue.component('g-footer',Footer)
 Vue.component('g-layout',Layout)
 Vue.component('g-sider',Sider)
 Vue.component('g-header',Header)
-// Vue.component('g-toast',Toast)
+Vue.component('g-toast',Toast)
+Vue.component('g-tabs',Tabs)
+Vue.component('g-tabs-head',TabsHead)
+Vue.component('g-tabs-body',TabsBody)
+Vue.component('g-tabs-item',TabsItem)
+Vue.component('g-tabs-pane',TabsPane)
 Vue.use(plugin)
 new Vue({
     el:'#app',
@@ -36,7 +46,8 @@ new Vue({
         loading1:false,
         loading2:true,
         loading3:false,
-        message:'input的双向绑定事件'
+        message:'input的双向绑定事件',
+        selectedTab:'sports'
     },
     created(){
         // this.$toast();
