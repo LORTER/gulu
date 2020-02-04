@@ -51,6 +51,10 @@ export default {
 <style lang='scss' scoped>
 .tabs-item {
   padding: 0 1em;
+  cursor: pointer;
+  height:100%;
+  display: flex;
+  align-items: center;
   &.active{
     background-color:#396
   }
