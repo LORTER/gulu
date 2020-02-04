@@ -26,8 +26,8 @@ export default {
     };
   },
   created() {
-    console.log(`----tabs给item的eventBus----`);
-    console.log(this.eventBus);
+    // console.log(`----tabs给item的eventBus----`);
+    // console.log(this.eventBus);
     this.eventBus.$on("update:selected", name => {
       // console.log(name, "tabs-item监听xxx()函数执行改变后从tabs传过来的值");
       this.active = name === this.name;
@@ -36,7 +36,7 @@ export default {
   mounted() {},
   methods: {
     xxx() {
-      this.eventBus.$emit("update:selected", this.name);
+      this.eventBus.$emit("update:selected", this.name,this);
     }
   },
   computed: {
@@ -49,6 +49,7 @@ export default {
 };
 </script>
 <style lang='scss' scoped>
+$blue:blue;
 .tabs-item {
   padding: 0 1em;
   cursor: pointer;
@@ -56,7 +57,8 @@ export default {
   display: flex;
   align-items: center;
   &.active{
-    background-color:#396
+    color:$blue;
+    font-weight: bold;
   }
 }
 </style>

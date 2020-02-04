@@ -14,8 +14,8 @@ export default {
     return {};
   },
   created() {
-    console.log(`----tabs给body的eventBus----`);
-    console.log(this.eventBus);
+    // console.log(`----tabs给body的eventBus----`);
+    // console.log(this.eventBus);
   },
   mounted() {},
   methods: {},
