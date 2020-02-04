@@ -6,6 +6,8 @@
 </template>
 
 <script>
+// 1、引入Vue
+import Vue from 'vue'
 export default {
   name: "GuluTabs",
   components: {},
@@ -25,12 +27,22 @@ export default {
     }
   },
   data() {
-    return {};
+    return {
+      eventBus: new Vue()
+    };
+  },
+  // 定义子孙公开访问属性
+  provide(){
+    return {
+      eventBus:this.eventBus
+    }
   },
   created() {
     // this.$emit('update:selected','xxx')
   },
-  mounted() {},
+  mounted() {
+    this.eventBus.$emit('update:selected',this.selected)
+  },
   methods: {},
   computed: {}
 };

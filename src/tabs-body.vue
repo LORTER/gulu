@@ -9,11 +9,14 @@
 export default {
   name: "GuluTabsBody",
   components: {},
-  props: {},
+  inject: ["eventBus"],
   data() {
     return {};
   },
-  created() {},
+  created() {
+    console.log(`----tabs给body的eventBus----`);
+    console.log(this.eventBus);
+  },
   mounted() {},
   methods: {},
   computed: {}
