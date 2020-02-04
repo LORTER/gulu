@@ -56,6 +56,7 @@ $blue:blue;
   height:100%;
   display: flex;
   align-items: center;
+  // border:1px solid black;
   &.active{
     color:$blue;
     font-weight: bold;

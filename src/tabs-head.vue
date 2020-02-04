@@ -18,38 +18,43 @@ export default {
   data() {
     return {};
   },
-  created() {
+  mounted() {
     // 1px下边框滑动第二部，监听
-    this.eventBus.$on('upadte:selected',(item,vm)=>{
-      console.log(item)
+    this.eventBus.$on("update:selected", (item, vm) => {
+      // 拿到选中元素的宽高
       console.log(vm.$el.getBoundingClientRect())
-    })
+      let { width, height ,left} = vm.$el.getBoundingClientRect();
+      // 设置1px边线的宽
+      console.log(left)
+      this.$refs.line.style.width = `${width}px`;
+      // 因为有margin：20px
+      this.$refs.line.style.left = `${left-20}px`;
+    });
     // console.log(`----tabs给head的eventBus----`);
     // console.log(this.eventBus);
   },
-  mounted() {},
   methods: {},
   computed: {}
 };
 </script>
 <style lang='scss' scoped>
-$tab-height:40px;
-$blue:blue;
+$tab-height: 40px;
+$blue: blue;
 .tabs-head {
   display: flex;
-  height:$tab-height;
+  height: $tab-height;
   justify-content: flex-start;
   align-items: center;
-  border:1px solid #f46;
+  border: 1px solid #f46;
   position: relative;
-  >.line{
+  > .line {
     position: absolute;
     bottom: 0;
-    border-bottom:1px solid $blue;
-    width:100px;
+    border-bottom: 1px solid $blue;
+    width: 100px;
   }
-  >.actions-wrapper{
-    margin-left:auto;
+  > .actions-wrapper {
+    margin-left: auto;
   }
 }
 </style>
