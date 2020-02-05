@@ -25,7 +25,7 @@ export default {
     // console.log(`----tabs给pane的eventBus----`);
     // console.log(this.eventBus);
     this.eventBus.$on("update:selected", name => {
-      // console.log(name, "tabs-pane监听xxx()函数执行改变后从tabs传过来的值");
+      // console.log(name, "tabs-pane监听onClick()函数执行改变后从tabs传过来的值");
       this.active = name === this.name;
     });
   },
