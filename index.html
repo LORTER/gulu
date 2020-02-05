@@ -97,6 +97,19 @@
 
 <body>
     <div id="app">
+        <h2>popover</h2>
+        <g-popover>
+            <template slot="content">
+                <div>消息内容11111111111111111111</div>
+            </template>
+            <g-button>消息1</g-button>
+        </g-popover>
+        <g-popover>
+            <template slot="content">
+                <div>消息内容2</div>
+            </template>
+            <g-button>消息2</g-button>
+        </g-popover>
         <h2>tabs</h2>
         <g-tabs :selected.sync="selectedTab">
         <!-- <g-tabs :selected="selectedTab" @update:selected="selectedTab=$event">  .sync等价于这种写法-->
