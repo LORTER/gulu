@@ -1,12 +1,14 @@
 <!-- popover -->
 <template>
-<!-- 这里的阻止冒泡是防止冒泡到document那个监听click事件的函数，触发两次visible=false -->
+  <!-- 这里的阻止冒泡是防止冒泡到document那个监听click事件的函数，触发两次visible=false -->
   <div class="popover" @click.stop="xxx">
-      <!-- 哪里点click不需要隐藏，就阻止冒泡到父元素的click事件 -->
-    <div class="content-wrapper" v-if="visible" @click.stop>
+    <!-- 哪里点click不需要隐藏，就阻止冒泡到父元素的click事件 -->
+    <div ref="contentWrapper" class="content-wrapper" v-if="visible" @click.stop>
       <slot name="content"></slot>
     </div>
-    <slot></slot>
+    <span ref="triggerWrapper">
+      <slot></slot>
+    </span>
   </div>
 </template>
 
@@ -29,22 +31,33 @@ export default {
       this.visible = !this.visible;
       console.log(this.visible, "切换visible");
       if (this.visible === true) {
-        console.log("如果visibel==true");
+        // console.log("如果visibel==true");
         //   添加一个异步函数
         // 为什么使用this.$nextTick不可以？
         // 问题，如果点弹出框，
         setTimeout(() => {
-          console.log("新增  document click 监听器", this.visible);
+          // 为什么要把消息提示框appendChild到body上，------怕外层元素overflow: hidden;、那样。提示框就显示不出来了
+          document.body.appendChild(this.$refs.contentWrapper);
+          let {
+            width,
+            height,
+            top,
+            left
+          } = this.$refs.triggerWrapper.getBoundingClientRect();
+          this.$refs.contentWrapper.style.left = left+window.scrollX + "px";
+          this.$refs.contentWrapper.style.top = top+window.scrollY + "px";
+
+          //   console.log("新增  document click 监听器", this.visible);
           //   ()=>{}         箭头函数和下面的用法相同
           //   function(){}.bind(this)  但是会返回一个新的函数,那样会关闭它返回的哪个函数
           //   监听用户是否点了页面其他的地方
           let eventHeadler = () => {
             // 如果点击了就关闭消息框
             this.visible = false;
-            console.log("删除监听器", this.visible);
+            // console.log("删除监听器", this.visible);
             // 顺便关闭时间的监听
             document.removeEventListener("click", eventHeadler);
-            console.log("点击body就关闭popover", this.visible);
+            // console.log("点击body就关闭popover", this.visible);
           };
           document.addEventListener("click", eventHeadler);
         });
@@ -59,12 +72,11 @@ export default {
   display: inline-block;
   vertical-align: top;
   position: relative;
-  .content-wrapper {
-    position: absolute;
-    bottom: 100%;
-    left: 0;
-    border: 1px solid red;
-    box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
-  }
+}
+.content-wrapper {
+  position: absolute;
+  border: 1px solid red;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+  transform: translateY(-100%);
 }
 </style>
