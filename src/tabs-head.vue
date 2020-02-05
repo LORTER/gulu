@@ -45,13 +45,12 @@ $blue: blue;
   height: $tab-height;
   justify-content: flex-start;
   align-items: center;
-  border: 1px solid #f46;
   position: relative;
   > .line {
     position: absolute;
     bottom: 0;
-    border-bottom: 1px solid $blue;
-    width: 100px;
+    border-bottom: 2px solid $blue;
+    transition: all 350ms;
   }
   > .actions-wrapper {
     margin-left: auto;
